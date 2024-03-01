@@ -1,0 +1,9 @@
+streamlit
+langchain
+langchain_google_genai
+langchain_community
+os
+datetime
+PyPDF2
+tempfile
+dotenv
