@@ -33,9 +33,12 @@ if __name__ == '__main__':
             st.success("✔️ Saved successfully")
 
     with t2:
-        print(mydb.list_collection_names())
+        collections = mydb.list_collection_names()
+
+        # Filter out the collections you don't want
+        filtered_collections = [collection for collection in collections if collection != "Login_Credentials"]
         
-        selected_folder = st.selectbox("Select a folder:", mydb.list_collection_names())
+        selected_folder = st.selectbox("Select a folder:", filtered_collections)
         selected_title = st.selectbox("Select a title:", mydb[selected_folder].distinct("Title"))
         st.write("Hello")
 
