@@ -6,12 +6,14 @@ from langchain_community.document_loaders import PyPDFLoader
 from PyPDF2 import PdfReader
 from langchain.prompts import PromptTemplate
 from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_openai import ChatOpenAI
 from langchain.chains.summarize import load_summarize_chain
 import os
 import tempfile
-
+from api_key import GOOGLE_API_KEY
 # Securely provide your Google API key (not shown here)
-llm = ChatGoogleGenerativeAI(model="gemini-pro")
+llm = ChatGoogleGenerativeAI(model="gemini-pro",google_api_key=GOOGLE_API_KEY)
+# llm = ChatOpenAI(model="gpt-3.5-turbo-0125", temperature=0)
 
 map_prompt = """
 Write a concise summary of the following:
