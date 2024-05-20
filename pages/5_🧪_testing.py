@@ -13,27 +13,24 @@ def save_cred(name,mail,pwd):
     mycol.insert_one(info)
 
 
-@st.experimental_dialog("Cast your vote")
-def vote(item):
-    st.write(f"Why is {item} your favorite?")
-    reason = st.text_input("Because...")
-    if st.button("Submit"):
-        st.session_state.vote = {"item": item, "reason": reason}
-        st.rerun()
-
-# if "vote" not in st.session_state:
-#     st.write("Vote for your favorite")
-#     if st.button("A"):
-#         vote("A")
-#     if st.button("B"):
-#         vote("B")
-# else:
-#     f"You voted for {st.session_state.vote['item']} because {st.session_state.vote['reason']}"
-
+@st.experimental_dialog("🔐Enter Registration Credentials")
 def main():
-    st.write("Hello Mayur!!")
+    name = st.text_input("👤 Enter Name")
+    email = st.text_input("📧 Email")
+    password = st.text_input("🔑 Password", type="password")
+    st.write("Otp sent successfully on your mail check mail andn enter otp for verification")
 
+    # if email and password:
+        
+    #     otp = st.text_input("🛡️ Verify OTP sent on your mail", type="password")
+    # reason = st.text_input("Because...")
+    if st.button("Submit"):
+        
+        st.session_state.main = {"email": email, "password": password}
+        st.rerun()
+        
+st.write("hello")
 
 if __name__ == '__main__':
-    vote("A")
     main()
+
