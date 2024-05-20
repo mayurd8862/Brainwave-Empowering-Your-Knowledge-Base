@@ -1,4 +1,6 @@
 streamlit
+streamlit_chat
+pymongo
 langchain
 langchain_google_genai
 langchain_community
