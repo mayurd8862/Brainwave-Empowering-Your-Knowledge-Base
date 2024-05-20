@@ -3,6 +3,9 @@ import pymongo
 
 # Function to sign up a new user
 def sign_up(name, mail, pwd):
+    if not name or not mail or not pwd:
+        return False, "⚠️All fields are required."
+
     myclient = pymongo.MongoClient("mongodb://localhost:27017")
     mydb = myclient["Brainwave"]
     mycol = mydb["Login_Credentials"]
@@ -16,6 +19,10 @@ def sign_up(name, mail, pwd):
 
 # Function to sign in an existing user
 def sign_in(mail, pwd):
+
+    if not mail or not pwd:
+        return None
+
     myclient = pymongo.MongoClient("mongodb://localhost:27017")
     mydb = myclient["Brainwave"]
     mycol = mydb["Login_Credentials"]
@@ -35,7 +42,7 @@ def handle_login():
         st.session_state.signedout = True
         st.session_state.signout = True
     else:
-        st.warning('Login Failed')
+        st.warning('⚠️Login Failed')
 
 # Function to handle user logout
 def handle_logout():
@@ -45,7 +52,7 @@ def handle_logout():
     st.session_state.useremail = ''
 
 # Streamlit app interface
-st.title('🧠 Welcome to :violet[BrainWave] :sunglasses:')
+st.title('Welcome to :violet[BrainWave] :sunglasses:')
 
 # Initialize session state variables
 if 'username' not in st.session_state:
