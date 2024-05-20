@@ -8,15 +8,15 @@ from langchain_community.vectorstores import Chroma
 from langchain_community.embeddings import SentenceTransformerEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.document_loaders import PyPDFLoader
-from api_key import GOOGLE_API_KEY
+# from api_key import GOOGLE_API_KEY
 import os
 import tempfile
 from langchain_community.document_loaders import WebBaseLoader
-
+GOOGLE_API_KEY = st.secrets.GOOGLE_API_KEY
 llm = ChatGoogleGenerativeAI(model="gemini-pro",google_api_key=GOOGLE_API_KEY)
 
 
-# llm = ChatOpenAI(model_name="gpt-3.5-turbo", openai_api_key="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")
+# llm = ChatOpenAI(model_name="gpt-3.5-turbo", openai_api_key="sk-8eTWVikMPM8UywSaztcyrN")
 
 st.title("🤖💬Chat with data")
 

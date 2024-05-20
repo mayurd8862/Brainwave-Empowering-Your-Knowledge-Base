@@ -10,8 +10,9 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.chains.summarize import load_summarize_chain
 import os
 import tempfile
-from api_key import GOOGLE_API_KEY
+# from api_key import GOOGLE_API_KEY
 # Securely provide your Google API key (not shown here)
+GOOGLE_API_KEY = st.secrets.GOOGLE_API_KEY
 llm = ChatGoogleGenerativeAI(model="gemini-pro",google_api_key=GOOGLE_API_KEY)
 # llm = ChatOpenAI(model="gpt-3.5-turbo-0125", temperature=0)
 

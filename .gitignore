@@ -9,6 +9,7 @@ api_key.py
 Notes/
 faiss_index/
 docs/
+.streamlit/
 
 # Distribution / packaging
 .Python
