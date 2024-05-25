@@ -50,13 +50,14 @@ def handle_logout():
     st.session_state.signedout = False
     st.session_state.username = ''
     st.session_state.useremail = ''
+    del st.session_state.username
 
 # Streamlit app interface
 st.title('Welcome to :violet[BrainWave] :sunglasses:')
 
 # Initialize session state variables
-if 'username' not in st.session_state:
-    st.session_state.username = ''
+# if 'username' not in st.session_state:
+#     st.session_state.username = ''
 if 'useremail' not in st.session_state:
     st.session_state.useremail = ''
 if "signedout" not in st.session_state:
@@ -93,3 +94,7 @@ if st.session_state.signout:
     st.text('Name: ' + st.session_state.username)
     st.text('Email id: ' + st.session_state.useremail)
     st.button('Sign out', on_click=handle_logout)
+
+
+
+
