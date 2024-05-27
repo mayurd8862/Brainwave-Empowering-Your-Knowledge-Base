@@ -85,8 +85,9 @@ if __name__ == '__main__':
                             document = mycol.find_one({"title": title, "project_name": proj_name, "username": user_name})
                             
                             if document:
+                                st.markdown(f"## {title}")
                                 st.write("Content:\n", document["content"])
-                                st.write("Time and Date:", document["time_date"])
+                                st.write("⏰", document["time_date"])
                             else:
                                 st.write("No information found for the selected title.")
                     else:
