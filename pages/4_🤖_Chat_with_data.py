@@ -20,6 +20,9 @@ groq_api_key= st.secrets.GROQ_API_KEY
 llm=ChatGroq(groq_api_key=groq_api_key,
              model_name="Llama3-8b-8192")
 
+headers ={
+    'groq_api_key' : st.secrets["GROQ_API_KEY"]
+}
 
 # llm = ChatOpenAI(model_name="gpt-3.5-turbo", openai_api_key="sk-8eTWVikMPM8UywSaztcyrN")
 

@@ -16,6 +16,10 @@ GOOGLE_API_KEY = st.secrets.GOOGLE_API_KEY
 llm = ChatGoogleGenerativeAI(model="gemini-pro",google_api_key=GOOGLE_API_KEY)
 # llm = ChatOpenAI(model="gpt-3.5-turbo-0125", temperature=0)
 
+headers ={
+    'GOOGLE_API_KEY' : st.secrets["GOOGLE_API_KEY"]
+}
+
 map_prompt = """
 Write a concise summary of the following:
 "{text}"
