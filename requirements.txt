@@ -5,4 +5,5 @@ langchain
 langchain_google_genai
 langchain_community
 PyPDF2
-
+streamlit_lottie
+openai
