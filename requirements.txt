@@ -7,3 +7,4 @@ langchain_community
 PyPDF2
 streamlit_lottie
 openai
+langchain_groq
