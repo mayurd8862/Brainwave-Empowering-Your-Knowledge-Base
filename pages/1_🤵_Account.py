@@ -91,8 +91,16 @@ if not st.session_state["signedout"]:
         st.button('Login', on_click=handle_login)
 
 if st.session_state.signout:
-    st.text('Name: ' + st.session_state.username)
-    st.text('Email id: ' + st.session_state.useremail)
+    st.success(f"✔️ logged in as :- **{st.session_state.username}**")
+
+    st.markdown("### ✨ Explore the features of our project ")
+    st.write("1) 📂 **Project Management** : Organize your notes and documents project-wise.")
+    st.write("2) 💬 **Chat with Documents** : Interact with your PDFs and CSVs through an intuitive chat interface.")
+    st.write("3) 📝 **Document Summarization** : Generate concise summaries of your PDF documents.")
+
+
+    # st.text('Name: ' + st.session_state.username)
+    # st.text('Email id: ' + st.session_state.useremail)
     st.button('Sign out', on_click=handle_logout)
 
 

@@ -1,6 +1,7 @@
 from langchain_community.chat_models import ChatOpenAI
 import streamlit as st
 import openai
+from langchain_groq import ChatGroq
 from streamlit_chat import message
 from langchain_community.document_loaders import YoutubeLoader
 from langchain_google_genai import ChatGoogleGenerativeAI
@@ -12,8 +13,12 @@ from langchain_community.document_loaders import PyPDFLoader
 import os
 import tempfile
 from langchain_community.document_loaders import WebBaseLoader
-GOOGLE_API_KEY = st.secrets.GOOGLE_API_KEY
-llm = ChatGoogleGenerativeAI(model="gemini-pro",google_api_key=GOOGLE_API_KEY)
+# GOOGLE_API_KEY = st.secrets.GOOGLE_API_KEY
+# llm = ChatGoogleGenerativeAI(model="gemini-pro",google_api_key=GOOGLE_API_KEY)
+
+groq_api_key= st.secrets.GROQ_API_KEY
+llm=ChatGroq(groq_api_key=groq_api_key,
+             model_name="Llama3-8b-8192")
 
 
 # llm = ChatOpenAI(model_name="gpt-3.5-turbo", openai_api_key="sk-8eTWVikMPM8UywSaztcyrN")
