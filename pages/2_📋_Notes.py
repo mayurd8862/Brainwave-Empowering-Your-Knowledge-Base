@@ -13,7 +13,7 @@ def load_lottiefile(filepath: str):
 lottie_coding = load_lottiefile("images/alert.json")
 
 def save_content(proj_name,title,content,time_data):
-    myclient = pymongo.MongoClient("mongodb+srv://mayurdabade1103:xMeE1MkoJKVnChIX@brainwave.bndu2pa.mongodb.net/")
+    myclient = pymongo.MongoClient("mongodb+srv://mayura_123:mayur12345@cluster0.ptq0mc5.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
     mydb = myclient["Brainwave"]
     mycol = mydb["notes"]
 
@@ -61,7 +61,7 @@ if __name__ == '__main__':
 
         with t2:
 
-            myclient = pymongo.MongoClient("mongodb+srv://mayurdabade1103:xMeE1MkoJKVnChIX@brainwave.bndu2pa.mongodb.net/")
+            myclient = pymongo.MongoClient("mongodb+srv://mayura_123:mayur12345@cluster0.ptq0mc5.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
             mydb = myclient["Brainwave"]
             mycol = mydb["notes"]
             collections = mydb.list_collection_names()
@@ -95,4 +95,4 @@ if __name__ == '__main__':
                 st.write("No projects found.")
     
 
-st.session_state
+# st.session_state
