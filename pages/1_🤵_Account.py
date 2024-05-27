@@ -6,7 +6,7 @@ def sign_up(name, mail, pwd):
     if not name or not mail or not pwd:
         return False, "⚠️All fields are required."
 
-    myclient = pymongo.MongoClient("mongodb://localhost:27017")
+    myclient = pymongo.MongoClient("mongodb+srv://mayurdabade1103:mayur11111@cluster0.vaiuvgt.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
     mydb = myclient["Brainwave"]
     mycol = mydb["Login_Credentials"]
 
@@ -23,7 +23,7 @@ def sign_in(mail, pwd):
     if not mail or not pwd:
         return None
 
-    myclient = pymongo.MongoClient("mongodb://localhost:27017")
+    myclient = pymongo.MongoClient("mongodb+srv://mayurdabade1103:mayur11111@cluster0.vaiuvgt.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
     mydb = myclient["Brainwave"]
     mycol = mydb["Login_Credentials"]
 
