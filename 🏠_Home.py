@@ -1,4 +1,6 @@
 import streamlit as st
+import json
+from streamlit_lottie import st_lottie
 
 st.title("🧠 Brainwave: 🤖 Empowering Your Knowledge Base")
 
@@ -11,3 +13,13 @@ Brainwave: is your ultimate companion for project management and data interactio
 # st.write("chat with pandas dataframe: https://chat-pandas-df.streamlit.app/")
 
 
+# Function to load the Lottie file
+def load_lottiefile(filepath: str):
+    with open(filepath, "r", encoding='utf-8') as f:
+        return json.load(f)
+
+# Load the Lottie file
+lottie_coding = load_lottiefile("hello.json")
+
+with st.sidebar:
+    st_lottie(lottie_coding, speed=1, loop=True, quality="high", height=300, width=300)
