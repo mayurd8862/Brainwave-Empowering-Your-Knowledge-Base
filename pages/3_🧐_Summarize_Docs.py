@@ -1,6 +1,3 @@
-# https://thecodespace.in/multiple-pdf-summarizer-webapp-using-openai-langchain-and-streamlit/
-
-
 import streamlit as st
 from langchain_community.document_loaders import PyPDFLoader
 from PyPDF2 import PdfReader
@@ -10,8 +7,6 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.chains.summarize import load_summarize_chain
 import os
 import tempfile
-# from api_key import GOOGLE_API_KEY
-# Securely provide your Google API key (not shown here)
 GOOGLE_API_KEY = st.secrets.GOOGLE_API_KEY
 llm = ChatGoogleGenerativeAI(model="gemini-pro",google_api_key=GOOGLE_API_KEY)
 # llm = ChatOpenAI(model="gpt-3.5-turbo-0125", temperature=0)
@@ -67,6 +62,3 @@ if pdf_files:
         summary = summarize_pdfs_from_folder(pdf_files)
         st.write(f"Summary for PDF:")
         st.write(summary)
-
-
-

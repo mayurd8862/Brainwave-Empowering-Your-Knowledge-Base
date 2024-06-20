@@ -70,7 +70,7 @@ if 'signout' not in st.session_state:
     st.session_state['signout'] = False
 
 if not st.session_state["signedout"]:
-    choice = st.selectbox('Login/Signup', ['Login', 'Sign up'])
+    choice = st.selectbox('Login/Signup', ['Sign up','Login', 'forgot password'])
 
     if choice == "Sign up":
         username = st.text_input('👤 Enter unique username')
@@ -85,7 +85,7 @@ if not st.session_state["signedout"]:
             else:
                 st.warning(message)
 
-    else:
+    elif choice == "Login":
         email = st.text_input('📧 Email Address')
         password = st.text_input('🔑 Password', type='password')
 
@@ -93,6 +93,10 @@ if not st.session_state["signedout"]:
         st.session_state.password_input = password
 
         st.button('Login', on_click=handle_login)
+
+    else:
+        st.text_input("Enter your registered mail: ")
+
 
 if st.session_state.signout:
     st.success(f"✔️ logged in as :- **{st.session_state.username}**")
