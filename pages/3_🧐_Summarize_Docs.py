@@ -1,4 +1,5 @@
 import streamlit as st
+import asyncio
 from langchain_community.document_loaders import PyPDFLoader
 from PyPDF2 import PdfReader
 from langchain.prompts import PromptTemplate
@@ -9,11 +10,38 @@ import os
 import tempfile
 GOOGLE_API_KEY = st.secrets.GOOGLE_API_KEY
 llm = ChatGoogleGenerativeAI(model="gemini-pro",google_api_key=GOOGLE_API_KEY)
-# llm = ChatOpenAI(model="gpt-3.5-turbo-0125", temperature=0)
 
 headers ={
     'GOOGLE_API_KEY' : st.secrets["GOOGLE_API_KEY"]
 }
+
+
+
+
+# import streamlit as st
+# from langchain_google_genai import ChatGoogleGenerativeAI
+
+# Ensure you have your Google API key stored securely
+# GOOGLE_API_KEY = st.secrets["google_api_key"]
+
+# Check if there is an existing event loop
+try:
+    asyncio.get_running_loop()
+except RuntimeError:
+    # Create a new event loop if there isn't one
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
+
+
+
+
+
+
+# from langchain_groq import ChatGroq
+# groq_api_key= st.secrets.GROQ_API_KEY
+# llm=ChatGroq(groq_api_key=groq_api_key,
+#             model_name="Llama3-8b-8192")
+
 
 map_prompt = """
 Write a concise summary of the following:
