@@ -2,7 +2,6 @@ import streamlit as st
 from otp_test import generateOTP,send_otp
 
 
-
 @st.experimental_dialog("🔑 Reset Your Password")
 def verify_popup(mail,otp_generated):
     
@@ -61,8 +60,3 @@ else:
     if st.button("NEXT"):
         send_otp(sender_email,reset_mail, password, subject, body)
         verify_popup(reset_mail, otp_generated)
-
-
-
-
-

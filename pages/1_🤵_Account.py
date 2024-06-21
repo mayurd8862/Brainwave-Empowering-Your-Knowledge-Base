@@ -1,5 +1,56 @@
 import streamlit as st
 import pymongo
+from otp_test import generateOTP,send_otp
+
+def update_password(email, new_password):
+
+    myclient = pymongo.MongoClient("mongodb://localhost:27017")
+    mydb = myclient["Brainwave"]
+    mycol = mydb["Login_Credentials"]
+
+    result = mycol.update_one(
+        {"Mail": email},
+        {"$set": {"Password": new_password}}
+    )
+
+
+def email_exists(email):
+    myclient = pymongo.MongoClient("mongodb://localhost:27017")
+    mydb = myclient["Brainwave"]
+    mycol = mydb["Login_Credentials"]
+    
+    if mycol.find_one({"Mail": email}):
+        return True
+    else:
+        return False
+
+
+@st.experimental_dialog("🔑 Reset Your Password")
+def verify_popup(mail,otp_generated):
+    
+    st.write(f"Verification OTP sent on your mail '{mail}' please Enter OTP and update your password {otp_generated}")
+    
+    otp = st.text_input("Enter Your OTP: ")
+    if otp:
+        if otp == otp_generated:
+            st.success("✔️ OTP verified successfully")
+            pass1 = st.text_input("Enter New Password:", type='password')
+            pass2 = st.text_input("Enter Password once again:", type='password')
+
+        else:
+            st.error("❌ Please enter correct OTP")
+
+    if st.button("Submit"):
+        if pass1 != pass2 :
+            st.warning("Please enter same passwords !!")
+        
+        elif (len(pass1)<8):
+            st.warning("Password length should be of 8 !!")
+
+        else:
+            update_password(mail,pass1)
+            st.success("👍 Your password is updated")
+        
 
 # Function to sign up a new user
 def sign_up(name, mail, pwd):
@@ -95,7 +146,23 @@ if not st.session_state["signedout"]:
         st.button('Login', on_click=handle_login)
 
     else:
-        st.text_input("Enter your registered mail: ")
+        otp_generated = generateOTP()
+
+        sender_email = "mayurdabade1103@gmail.com"
+        password = st.secrets['mail_pwd'] # Your App Password
+        subject = "BrainWave password recovery"
+        body = f"Verification OTP for password recovery - {otp_generated}."
+
+        if "vote" not in st.session_state:
+            reset_mail = st.text_input("Enter your registered mail: ")
+
+
+        if st.button("NEXT"):
+            if reset_mail and email_exists(reset_mail) == False:
+                st.error("❌ Your mail is not registered with BrainWave")
+            else:
+                send_otp(sender_email,reset_mail, password, subject, body)
+                verify_popup(reset_mail, otp_generated)
 
 
 if st.session_state.signout:
