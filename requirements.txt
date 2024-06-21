@@ -8,3 +8,4 @@ streamlit_lottie
 openai
 langchain_groq
 langchain_community==0.0.31
+asyncio

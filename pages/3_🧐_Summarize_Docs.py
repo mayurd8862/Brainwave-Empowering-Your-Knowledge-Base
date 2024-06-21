@@ -16,25 +16,12 @@ headers ={
 }
 
 
-
-
-# import streamlit as st
-# from langchain_google_genai import ChatGoogleGenerativeAI
-
-# Ensure you have your Google API key stored securely
-# GOOGLE_API_KEY = st.secrets["google_api_key"]
-
-# Check if there is an existing event loop
 try:
     asyncio.get_running_loop()
 except RuntimeError:
     # Create a new event loop if there isn't one
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(loop)
-
-
-
-
 
 
 # from langchain_groq import ChatGroq
