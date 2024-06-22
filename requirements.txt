@@ -12,3 +12,4 @@ asyncio
 pypdf
 sentence_transformers
 bs4
+chromadb
