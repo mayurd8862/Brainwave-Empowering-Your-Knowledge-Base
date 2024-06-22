@@ -3,9 +3,10 @@ streamlit_chat
 pymongo
 langchain
 langchain_google_genai
-PyPDF2==3.0.1
+PyPDF2
 streamlit_lottie
 openai
 langchain_groq
-langchain_community==0.0.31
+langchain_community
 asyncio
+pypdf

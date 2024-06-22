@@ -51,11 +51,11 @@ combine_prompt_template = PromptTemplate(template=combine_prompt, input_variable
 def summarize_pdfs_from_folder(pdf_files):
     summaries = []
     for pdf_file in pdf_files:
-        with tempfile.NamedTemporaryFile(delete=False) as temp_file:
-            temp_path = temp_file.name
-            temp_file.write(pdf_file.read())
+        # with tempfile.NamedTemporaryFile(delete=False) as temp_file:
+        #     temp_path = temp_file.name
+        #     temp_file.write(pdf_file.read())
         
-        loader = PyPDFLoader(temp_path)
+        loader = PyPDFLoader(pdf_files)
         docs = loader.load_and_split()
         
         summary_chain = load_summarize_chain(llm=llm,
