@@ -13,5 +13,4 @@ pypdf
 sentence_transformers
 bs4
 chromadb
-pysqlite3-binary
-sqlite-database
+sqlite3
