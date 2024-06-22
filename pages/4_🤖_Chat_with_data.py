@@ -152,7 +152,6 @@ with tab2:
     GOOGLE_API_KEY = st.secrets.GOOGLE_API_KEY
     llm = ChatGoogleGenerativeAI(model="gemini-pro",google_api_key=GOOGLE_API_KEY)
 
-    import streamlit as st
     url = st.text_input("Enter website URL:")
     submit = st.checkbox('Submit & chat')
 
@@ -184,8 +183,6 @@ with tab2:
             st.session_state['requests'] = []
 
 
-        # Build prompt
-        from langchain.prompts import PromptTemplate
         template = """Use the following pieces of context to answer the question at the end. If you don't know the answer, just say that you don't know, don't try to make up an answer. Use three sentences maximum. Keep the answer as concise as possible. 
         {context}
         Question: {question}
