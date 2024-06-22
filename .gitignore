@@ -8,6 +8,7 @@ __pycache__/
 api_key.py
 Notes/
 faiss_index/
+otp_test.py
 docs/
 .streamlit/
 budget_speech.pdf
