@@ -51,12 +51,18 @@ combine_prompt_template = PromptTemplate(template=combine_prompt, input_variable
 def summarize_pdfs_from_folder(pdf_files):
     summaries = []
     for pdf_file in pdf_files:
+        # if pdf_file is not None:
+        with tempfile.NamedTemporaryFile(delete=False) as tmp_file:
+            tmp_file.write(pdf_file.read())
+            pdf_path = tmp_file.name
+            loader = PyPDFLoader(pdf_path)
+            docs = loader.load_and_split()
         # with tempfile.NamedTemporaryFile(delete=False) as temp_file:
         #     temp_path = temp_file.name
         #     temp_file.write(pdf_file.read())
         
-        loader = PyPDFLoader(pdf_files)
-        docs = loader.load_and_split()
+        # loader = PyPDFLoader(pdf_files)
+        # docs = loader.load_and_split()
         
         summary_chain = load_summarize_chain(llm=llm,
                                              chain_type='map_reduce',
@@ -66,7 +72,7 @@ def summarize_pdfs_from_folder(pdf_files):
 
         summary = summary_chain.run(docs)
         summaries.append(summary)
-        os.remove(temp_path)
+        os.remove(pdf_path)
     
     return summaries
 
