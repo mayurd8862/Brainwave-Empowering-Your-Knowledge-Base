@@ -1,10 +1,12 @@
 import streamlit as st
 import pymongo
 from otp_test import generateOTP,send_otp
+mongodb_connect = st.secrets.mongodb_atlas
 
 def update_password(email, new_password):
 
-    myclient = pymongo.MongoClient("mongodb://localhost:27017")
+    # myclient = pymongo.MongoClient("mongodb://localhost:27017")
+    myclient = pymongo.MongoClient(mongodb_connect)
     mydb = myclient["Brainwave"]
     mycol = mydb["Login_Credentials"]
 
@@ -15,7 +17,8 @@ def update_password(email, new_password):
 
 
 def email_exists(email):
-    myclient = pymongo.MongoClient("mongodb://localhost:27017")
+    # myclient = pymongo.MongoClient("mongodb://localhost:27017")
+    myclient = pymongo.MongoClient(mongodb_connect)
     mydb = myclient["Brainwave"]
     mycol = mydb["Login_Credentials"]
     
@@ -57,8 +60,8 @@ def sign_up(name, mail, pwd):
     if not name or not mail or not pwd:
         return False, "⚠️All fields are required."
 
-    # myclient = pymongo.MongoClient("mongodb+srv://mayurdabade1103:mayur11111@cluster0.vaiuvgt.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
-    myclient = pymongo.MongoClient("mongodb://localhost:27017")
+    # myclient = pymongo.MongoClient("mongodb://localhost:27017")
+    myclient = pymongo.MongoClient(mongodb_connect)
 
     
     mydb = myclient["Brainwave"]
@@ -77,8 +80,9 @@ def sign_in(mail, pwd):
     if not mail or not pwd:
         return None
 
-    # myclient = pymongo.MongoClient("mongodb+srv://mayurdabade1103:mayur11111@cluster0.vaiuvgt.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
-    myclient = pymongo.MongoClient("mongodb://localhost:27017")
+    # myclient = pymongo.MongoClient("mongodb://localhost:27017")
+    myclient = pymongo.MongoClient(mongodb_connect)
+
     mydb = myclient["Brainwave"]
     mycol = mydb["Login_Credentials"]
 
@@ -173,9 +177,6 @@ if st.session_state.signout:
     st.write("2) 💬 **Chat with Documents** : Interact with your PDFs and CSVs through an intuitive chat interface.")
     st.write("3) 📝 **Document Summarization** : Generate concise summaries of your PDF documents.")
 
-
-    # st.text('Name: ' + st.session_state.username)
-    # st.text('Email id: ' + st.session_state.useremail)
     st.button('Sign out', on_click=handle_logout)
 
 

@@ -14,7 +14,7 @@ def load_lottiefile(filepath: str):
         return json.load(f)
 
 # Load the Lottie file
-lottie_coding = load_lottiefile("hello.json")
+lottie_coding = load_lottiefile("images/hello.json")
 
 # with st.sidebar:
 #     st_lottie(lottie_coding, speed=1, loop=True, quality="high", height=300, width=300)

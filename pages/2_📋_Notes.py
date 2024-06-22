@@ -4,6 +4,7 @@ from streamlit_lottie import st_lottie
 import json
 from datetime import datetime
 
+mongodb_connect = st.secrets.mongodb_atlas
 # Function to load the Lottie file
 def load_lottiefile(filepath: str):
     with open(filepath, "r") as f:
@@ -13,8 +14,10 @@ def load_lottiefile(filepath: str):
 lottie_coding = load_lottiefile("images/alert.json")
 
 def save_content(proj_name,title,content,time_data):
-    # myclient = pymongo.MongoClient("mongodb+srv://mayurdabade1103:mayur11111@cluster0.vaiuvgt.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
-    myclient = pymongo.MongoClient("mongodb://localhost:27017")
+
+    # myclient = pymongo.MongoClient("mongodb://localhost:27017")
+    myclient = pymongo.MongoClient(mongodb_connect)
+    
     mydb = myclient["Brainwave"]
     mycol = mydb["notes"]
 
@@ -62,8 +65,10 @@ if __name__ == '__main__':
 
         with t2:
 
-            # myclient = pymongo.MongoClient("mongodb+srv://mayurdabade1103:mayur11111@cluster0.vaiuvgt.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
-            myclient = pymongo.MongoClient("mongodb://localhost:27017")
+            
+            # myclient = pymongo.MongoClient("mongodb://localhost:27017")
+            myclient = pymongo.MongoClient(mongodb_connect)
+
             mydb = myclient["Brainwave"]
             mycol = mydb["notes"]
             collections = mydb.list_collection_names()
