@@ -11,6 +11,7 @@ import os
 import tempfile
 from langchain_community.document_loaders import WebBaseLoader
 from langchain_groq import ChatGroq
+from langchain.chains import RetrievalQA
 
 
 st.title("🤖💬Chat with data")
@@ -21,19 +22,17 @@ client = pymongo.MongoClient("mongodb://localhost:27017/")
 db = client["chatbot_database"]
 collection = db["chatbot_history"]
 
-def store_chat_history(title, user_input, bot_response):
-    # Create a document to store in MongoDB
-    chat_entry = {
-        "title": title,
-        "timestamp": datetime.now(),
-        "user_input": user_input,
-        "bot_response": bot_response
-    }
-    # Insert the document into the collection
-    collection.insert_one(chat_entry)
+# def store_chat_history(title, user_input, bot_response):
+#     # Create a document to store in MongoDB
+#     chat_entry = {
+#         "title": title,
+#         "timestamp": datetime.now(),
+#         "user_input": user_input,
+#         "bot_response": bot_response
+#     }
+#     # Insert the document into the collection
+#     collection.insert_one(chat_entry)
 
-
-import streamlit as st
 
 tab1, tab2 = st.tabs(["Chat with PDF", "Chat with website"])
 
@@ -126,25 +125,25 @@ with tab1:
                     if i < len(st.session_state['requests']):
                         message(st.session_state["requests"][i], is_user=True,key=str(i)+ '_user')
     
-    def retrieve_chat_history(title):
-        chat_history = collection.find({"title": title})
-        return list(chat_history)
+    # def retrieve_chat_history(title):
+    #     chat_history = collection.find({"title": title})
+    #     return list(chat_history)
 
-    chat_history_button = st.toggle("**Show Chat History**")
+    # chat_history_button = st.toggle("**Show Chat History**")
 
-    if chat_history_button:
-        # Query unique titles
-        unique_titles = collection.distinct("title")
-        selected_title = st.selectbox("Select a title:", unique_titles)
-        chat_history = retrieve_chat_history(selected_title)
+    # if chat_history_button:
+    #     # Query unique titles
+    #     unique_titles = collection.distinct("title")
+    #     selected_title = st.selectbox("Select a title:", unique_titles)
+    #     chat_history = retrieve_chat_history(selected_title)
         
-        # Display chat history
-        for i, entry in enumerate(chat_history):
-            # st.write(f"Title: {entry['title']}")
-            # st.write(f"Timestamp: {entry['timestamp']}")
-            st.write(f"👨‍💼: {entry['user_input']}")
-            st.write(f"🤖: {entry['bot_response']}")
-            st.write("")
+    #     # Display chat history
+    #     for i, entry in enumerate(chat_history):
+    #         # st.write(f"Title: {entry['title']}")
+    #         # st.write(f"Timestamp: {entry['timestamp']}")
+    #         st.write(f"👨‍💼: {entry['user_input']}")
+    #         st.write(f"🤖: {entry['bot_response']}")
+    #         st.write("")
 
             
 
@@ -193,8 +192,7 @@ with tab2:
         Helpful Answer:"""
         QA_CHAIN_PROMPT = PromptTemplate(input_variables=["context", "question"],template=template,)
 
-        # Run chain
-        from langchain.chains import RetrievalQA
+
 
         # container for chat history
         response_container = st.container()
