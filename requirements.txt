@@ -10,3 +10,5 @@ langchain_groq
 langchain_community
 asyncio
 pypdf
+sentence_transformers
+bs4
