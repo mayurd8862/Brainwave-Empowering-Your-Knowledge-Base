@@ -10,3 +10,4 @@ langchain_groq
 langchain_community
 datetime
 PyPDF2
+sentence-transformers
