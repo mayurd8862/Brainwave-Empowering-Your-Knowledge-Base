@@ -5,6 +5,14 @@ __pycache__/
 
 # C extensions
 *.so
+api_key.py
+Notes/
+faiss_index/
+otp_test.py
+docs/
+.streamlit/
+budget_speech.pdf
+VillageRevisitsIntro.pdf
 
 Notes/
 faiss_index/

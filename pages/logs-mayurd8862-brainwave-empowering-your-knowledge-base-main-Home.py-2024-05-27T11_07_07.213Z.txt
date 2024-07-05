@@ -1,0 +1,242 @@
+
+[     UTC     ] Logs for brainwave.streamlit.app/Account
+────────────────────────────────────────────────────────────────────────────────────────
+[05:05:09] 🚀 Starting up repository: 'brainwave-empowering-your-knowledge-base', branch: 'main', main module: 'Home.py'
+[05:05:09] 🐙 Cloning repository...
+[05:05:11] 🐙 Cloning into '/mount/src/brainwave-empowering-your-knowledge-base'...
+Warning: Permanently added the ED25519 host key for IP address '140.82.116.3' to the list of known hosts.
+
+[05:05:11] 🐙 Cloned repository!
+[05:05:11] 🐙 Pulling code changes from Github...
+[05:05:12] 📦 Processing dependencies...
+
+──────────────────────────────────────── uv ───────────────────────────────────────────
+
+Using uv pip install.
+Resolved 86 packages in 710ms
+Downloaded 86 packages in 2.40s
+Installed 86 packages in 206ms
+ + aiohttp==3.9.5
+ + aiosignal==1.3.1
+ + altair==5.3.0
+ + annotated-types==0.7.0
+ + attrs==23.2.0
+ + blinker==1.8.2
+ + cachetools==5.3.3
+ + certifi==2024.2.2
+ + charset-normalizer==3.3.2
+ + click==8.1.7
+ + dataclasses-json==0.6.6
+ + dnspython==2.6.1
+ + frozenlist==1.4.1
+ + gitdb==4.0.11
+ + gitpython==3.1.43
+ + google-ai-generativelanguage==0.6.4
+ [2024-05-27 05:05:15.751331] + google-api-core==2.19.0
+ + google-api-python-client==2.130.0
+ + google-auth==2.29.0
+ + google-auth-httplib2==0.2.0
+ + google-generativeai==0.5.4
+ + googleapis-common-protos==1.63.0
+ + greenlet==3.0.3
+ + grpcio==1.64.0
+ + grpcio-status==1.62.2
+ + httplib2==0.22.0
+ + idna==3.7
+ + jinja2[2024-05-27 05:05:15.751716] ==3.1.4
+ + jsonpatch==1.33
+ + jsonpointer==2.4
+ + jsonschema==4.22.0
+ + jsonschema-specifications==2023.12.1
+ [2024-05-27 05:05:15.751967] + langchain==0.2.1
+ + langchain-community==0.2.1
+ + langchain-core==0.2.1
+ + langchain-google-genai==1.0.5
+ + [2024-05-27 05:05:15.752161] langchain-text-splitters==0.2.0
+ + langsmith==0.1.63
+ + [2024-05-27 05:05:15.752594] markdown-it-py==3.0.0
+ + markupsafe==2.1.5
+ + marshmallow==3.21.2
+ + mdurl==0.1.2
+ + multidict==6.0.5
+ + mypy-extensions==1.0.0
+ + numpy==1.26.4
+ + orjson==3.10.3
+ + packaging==23.2
+ + pandas==2.2.2
+ + pillow==10.3.0
+ + proto-plus==1.23.0
+ + protobuf==4.25.3
+ + pyarrow==16.1.0
+ + pyasn1==0.6.0
+ + pyasn1-modules==0.4.0
+ + pydantic==2.7.1
+ + pydantic-core==2.18.2
+ + pydeck==0.9.1
+ + pygments==2.18.0
+ + pymongo[2024-05-27 05:05:15.752932] ==4.7.2
+ + pyparsing==3.1.2
+ + pypdf2==3.0.1
+ + python-dateutil==2.9.0.post0
+ + pytz==2024.1
+ + pyyaml==6.0.1
+ + referencing==0.35.1
+ + requests==2.32.2
+ + rich==13.7.1[2024-05-27 05:05:15.753074] 
+ + rpds-py==0.18.1
+ + rsa==4.9
+ + six==1.16.0
+ + smmap==5.0.1
+ + sqlalchemy==2.0.30
+ + streamlit==1.35.0
+ + streamlit-chat==0.1.1
+ [2024-05-27 05:05:15.753308] + tenacity==8.3.0
+ + toml==0.10.2
+ + toolz==0.12.1
+ + tornado==6.4
+ + tqdm==4.66.4
+ + typing-extensions==4.12.0
+ + typing-inspect==0.9.0
+ + tzdata==2024.1[2024-05-27 05:05:15.753512] 
+ + uritemplate==4.1.1
+ + urllib3==2.2.1
+ + watchdog==4.0.1
+ + yarl==1.9.4
+Checking if Streamlit is installed
+Found Streamlit version 1.35.0 in the environment
+
+────────────────────────────────────────────────────────────────────────────────────────
+
+[05:05:17] 🐍 Python dependencies were installed from /mount/src/brainwave-empowering-your-knowledge-base/requirements.txt using uv.
+Check if streamlit is installed
+Streamlit is already installed
+[05:05:19] 📦 Processed dependencies!
+
+
+
+────────────────────── Traceback (most recent call last) ───────────────────────
+  /home/adminuser/venv/lib/python3.11/site-packages/streamlit/runtime/scriptru  
+  nner/script_runner.py:600 in _run_script                                      
+                                                                                
+  /mount/src/brainwave-empowering-your-knowledge-base/pages/2_📋_Notes.py:3 in  
+  <module>                                                                      
+                                                                                
+     1 import streamlit as st                                                   
+     2 import pymongo                                                           
+  ❱  3 from streamlit_lottie import st_lottie                                   
+     4 import json                                                              
+     5 from datetime import datetime                                            
+     6                                                                          
+────────────────────────────────────────────────────────────────────────────────
+ModuleNotFoundError: No module named 'streamlit_lottie'
+────────────────────── Traceback (most recent call last) ───────────────────────
+  /home/adminuser/venv/lib/python3.11/site-packages/streamlit/runtime/scriptru  
+  nner/script_runner.py:600 in _run_script                                      
+                                                                                
+  /mount/src/brainwave-empowering-your-knowledge-base/pages/4_🤖_Chat_with_dat  
+  a.py:3 in <module>                                                            
+                                                                                
+      1 from langchain_community.chat_models import ChatOpenAI                  
+      2 import streamlit as st                                                  
+  ❱   3 import openai                                                           
+      4 from langchain_groq import ChatGroq                                     
+      5 from streamlit_chat import message                                      
+      6 from langchain_community.document_loaders import YoutubeLoader          
+────────────────────────────────────────────────────────────────────────────────
+ModuleNotFoundError: No module named 'openai'
+────────────────────── Traceback (most recent call last) ───────────────────────
+  /home/adminuser/venv/lib/python3.11/site-packages/streamlit/runtime/scriptru  
+  nner/script_runner.py:600 in _run_script                                      
+                                                                                
+  /mount/src/brainwave-empowering-your-knowledge-base/pages/2_📋_Notes.py:3 in  
+  <module>                                                                      
+                                                                                
+     1 import streamlit as st                                                   
+     2 import pymongo                                                           
+  ❱  3 from streamlit_lottie import st_lottie                                   
+     4 import json                                                              
+     5 from datetime import datetime                                            
+     6                                                                          
+────────────────────────────────────────────────────────────────────────────────
+ModuleNotFoundError: No module named 'streamlit_lottie'
+────────────────────── Traceback (most recent call last) ───────────────────────
+  /home/adminuser/venv/lib/python3.11/site-packages/streamlit/runtime/scriptru  
+  nner/script_runner.py:600 in _run_script                                      
+                                                                                
+  /mount/src/brainwave-empowering-your-knowledge-base/pages/4_🤖_Chat_with_dat  
+  a.py:3 in <module>                                                            
+                                                                                
+      1 from langchain_community.chat_models import ChatOpenAI                  
+      2 import streamlit as st                                                  
+  ❱   3 import openai                                                           
+      4 from langchain_groq import ChatGroq                                     
+      5 from streamlit_chat import message                                      
+      6 from langchain_community.document_loaders import YoutubeLoader          
+────────────────────────────────────────────────────────────────────────────────
+ModuleNotFoundError: No module named 'openai'
+[05:11:40] 🐙 Pulling code changes from Github...
+[05:11:41] 📦 Processing dependencies...
+
+──────────────────────────────────────── uv ───────────────────────────────────────────
+
+Using uv pip install.
+Resolved 94 packages in 165ms
+Downloaded 8 packages in 126ms
+Installed 8 packages in 19ms
+ + anyio==4.4.0
+ + distro==1.9.0
+ + h11==0.14.0
+ + httpcore==1.0.5
+ +[2024-05-27 05:11:42.554049]  httpx==0.27.0
+ + openai==1.30.3
+ + sniffio==1.3.1
+ + streamlit-lottie==0.0.5
+Checking if Streamlit is installed
+Found Streamlit version 1.35.0 in the environment
+
+────────────────────────────────────────────────────────────────────────────────────────
+
+[05:11:43] 🐍 Python dependencies were installed from /mount/src/brainwave-empowering-your-knowledge-base/requirements.txt using uv.
+[05:11:43] 📦 Processed dependencies!
+
+
+
+[05:11:47] 🔄 Updated app!
+[05:13:57] 🐙 Pulling code changes from Github...
+[05:13:58] 📦 Processing dependencies...
+
+──────────────────────────────────────── uv ───────────────────────────────────────────
+
+Using uv pip install.
+Resolved [2024-05-27 05:13:58.856185] 96 packages[2024-05-27 05:13:58.856383]  in 197ms[2024-05-27 05:13:58.856577] 
+Downloaded 2 packages in 38ms
+Installed 2 packages in 5ms
+ + groq==0.8.0[2024-05-27 05:13:58.900240] 
+ + langchain-groq==0.1.4
+Checking if Streamlit is installed
+Found Streamlit version 1.35.0 in the environment
+
+────────────────────────────────────────────────────────────────────────────────────────
+
+[05:14:00] 🐍 Python dependencies were installed from /mount/src/brainwave-empowering-your-knowledge-base/requirements.txt using uv.
+[05:14:00] 📦 Processed dependencies!
+
+
+
+[05:14:02] 🔄 Updated app!
+[10:18:34] 🐙 Pulling code changes from Github...
+[10:18:35] 📦 Processing dependencies...
+[10:18:35] 📦 Processed dependencies!
+[10:18:36] 🔄 Updated app!
+[10:44:26] 🐙 Pulling code changes from Github...
+[10:44:27] 📦 Processing dependencies...
+[10:44:27] 📦 Processed dependencies!
+[10:44:28] 🔄 Updated app!
+[10:52:20] 🐙 Pulling code changes from Github...
+[10:52:21] 📦 Processing dependencies...
+[10:52:21] 📦 Processed dependencies!
+[10:52:23] 🔄 Updated app!
+[11:03:36] 🐙 Pulling code changes from Github...
+[11:03:37] 📦 Processing dependencies...
+[11:03:37] 📦 Processed dependencies!
+[11:03:39] 🔄 Updated app!
