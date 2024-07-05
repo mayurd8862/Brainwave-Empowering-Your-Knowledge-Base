@@ -12,3 +12,4 @@ datetime
 PyPDF2
 sentence-transformers
 faiss-cpu
+beautifulsoup4
