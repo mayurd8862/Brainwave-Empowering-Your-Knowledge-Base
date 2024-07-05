@@ -9,6 +9,7 @@ from langchain.chains import RetrievalQA
 from langchain_groq import ChatGroq
 import tempfile
 import os
+import uuid
 
 st.title("🤖💬 Chat with Data")
 
@@ -17,11 +18,11 @@ tab1, tab2 = st.tabs(["Chat with PDF", "Chat with Website"])
 groq_api_key = st.secrets["GROQ_API_KEY"]
 llm = ChatGroq(groq_api_key=groq_api_key, model_name="Llama3-8b-8192")
 
-def init_session_state():
-    if 'responses' not in st.session_state:
-        st.session_state['responses'] = ["How can I assist you?"]
-    if 'requests' not in st.session_state:
-        st.session_state['requests'] = []
+def init_session_state(key_prefix):
+    if f'{key_prefix}_responses' not in st.session_state:
+        st.session_state[f'{key_prefix}_responses'] = ["How can I assist you?"]
+    if f'{key_prefix}_requests' not in st.session_state:
+        st.session_state[f'{key_prefix}_requests'] = []
 
 def load_and_process_data(loader):
     data = loader.load_and_split() if isinstance(loader, PyPDFLoader) else loader.load()
@@ -38,8 +39,8 @@ def load_and_process_data(loader):
 
     return vectordb
 
-def chat_interface(vectordb, input_key):
-    init_session_state()
+def chat_interface(vectordb, input_key, key_prefix):
+    init_session_state(key_prefix)
 
     template = """Use the following pieces of context to answer the question at the end. If you don't know the answer, just say that you don't know, don't try to make up an answer. Use three sentences maximum. Keep the answer as concise as possible. 
     {context}
@@ -64,15 +65,16 @@ def chat_interface(vectordb, input_key):
                 result = qa_chain({"query": query})
                 response = result["result"]
 
-            st.session_state.requests.append(query)
-            st.session_state.responses.append(response)
+            st.session_state[f'{key_prefix}_requests'].append(query)
+            st.session_state[f'{key_prefix}_responses'].append(response)
 
     with response_container:
-        if st.session_state['responses']:
-            for i in range(len(st.session_state['responses'])):
-                message(st.session_state['responses'][i], key=str(i))
-                if i < len(st.session_state['requests']):
-                    message(st.session_state["requests"][i], is_user=True, key=str(i) + '_user')
+        if st.session_state[f'{key_prefix}_responses']:
+            for i in range(len(st.session_state[f'{key_prefix}_responses'])):
+                unique_key = str(uuid.uuid4())
+                message(st.session_state[f'{key_prefix}_responses'][i], key=f'response_{key_prefix}_{unique_key}')
+                if i < len(st.session_state[f'{key_prefix}_requests']):
+                    message(st.session_state[f'{key_prefix}_requests'][i], is_user=True, key=f'request_{key_prefix}_{unique_key}_user')
 
 with tab1:
     file = st.file_uploader("Upload PDF File", type=["pdf"])
@@ -86,7 +88,7 @@ with tab1:
 
             loader = PyPDFLoader(file_path)
             vectordb = load_and_process_data(loader)
-            chat_interface(vectordb, "input_pdf")
+            chat_interface(vectordb, "input_pdf", "pdf")
 
         except Exception as e:
             st.error(f"An error occurred: {e}")
@@ -105,7 +107,7 @@ with tab2:
         try:
             loader = WebBaseLoader(url)
             vectordb = load_and_process_data(loader)
-            chat_interface(vectordb, "input_url")
+            chat_interface(vectordb, "input_url", "url")
 
         except Exception as e:
             st.error(f"An error occurred: {e}")

@@ -31,7 +31,7 @@ def email_exists(email):
 @st.experimental_dialog("🔑 Reset Your Password")
 def verify_popup(mail,otp_generated):
     
-    st.write(f"Verification OTP sent on your mail '{mail}' please Enter OTP and update your password {otp_generated}")
+    st.write(f"Verification OTP sent on your mail '{mail}'")
     
     otp = st.text_input("Enter Your OTP: ")
     if otp:
