@@ -11,3 +11,4 @@ langchain_community
 datetime
 PyPDF2
 sentence-transformers
+faiss-cpu
