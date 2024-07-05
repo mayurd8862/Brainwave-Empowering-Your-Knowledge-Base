@@ -3,7 +3,7 @@ streamlit_chat
 pymongo
 langchain
 langchain_google_genai
-PyPDF2
+pypdf
 streamlit_lottie
 openai
 langchain_groq
