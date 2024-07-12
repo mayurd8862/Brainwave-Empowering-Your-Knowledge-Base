@@ -11,6 +11,13 @@ Welcome to **🧠 BrainWave: 🤖 Empowering Your Knowledge Base** – your ulti
 - **📝 Document Summarization** : Generate concise summaries of your PDF documents.
 
 
+
+![RAG Pipeline](https://github.com/user-attachments/assets/9f549bd2-c162-4464-9a3d-41d6919edf69)
+
+
+![Summarization map-reduce](https://github.com/user-attachments/assets/dccc4bf9-a461-4f4d-a63d-c622c56e3e30)
+
+
 ## Installation 🛠️
 To get started with BrainWave, follow these steps:
 
