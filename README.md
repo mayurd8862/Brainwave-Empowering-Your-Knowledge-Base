@@ -73,10 +73,11 @@ The web application architecture will consist of the following components:
 
 ![RAG Pipeline](https://github.com/user-attachments/assets/9f549bd2-c162-4464-9a3d-41d6919edf69)
 
-platforms used for:
-word embedding - 
-vector database - 
-LLM - 
+   platforms used for:
+
+   - word embedding - all-MiniLM-L6-v2 using langchain_community.embeddings library
+   - vector database - facebook's vectorstore 'FAISS'
+   - LLM - llama-3-8b using Groq
 
 ### 6. Used MongoDB for Storing Notes and Login Credentials:
 
