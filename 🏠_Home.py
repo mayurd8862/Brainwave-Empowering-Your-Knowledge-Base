@@ -2,17 +2,6 @@ import streamlit as st
 import json
 from streamlit_lottie import st_lottie
 
-# from st_social_media_links import SocialMediaIcons
-
-# social_media_links = [
-#     "https://www.linkedin.com/in/mayur-dabade-b527a9230",
-#     "https://www.instagram.com/ThisIsAnExampleLink",
-#     "https://www.github.com/jlnetosci/st-social-media-links",
-# ]
-
-# social_media_icons = SocialMediaIcons(social_media_links)
-
-# social_media_icons.render(sidebar=True)
 
 from utils import contributor_card, enric_info
 with st.sidebar:
@@ -25,6 +14,7 @@ with st.sidebar:
         ), 
         unsafe_allow_html=True)
     
+
 st.title("🧠 Brainwave: 🤖 Empowering Your Knowledge Base")
 
 st.write("""

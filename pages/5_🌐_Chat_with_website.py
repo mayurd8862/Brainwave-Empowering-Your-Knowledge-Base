@@ -1,44 +1,31 @@
-
-
-
-
-
 import streamlit as st
 from streamlit_chat import message
 from langchain_community.embeddings import SentenceTransformerEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain_community.document_loaders import PyPDFLoader
+from langchain_community.document_loaders import WebBaseLoader
 from langchain_community.vectorstores import FAISS
 from langchain.prompts import PromptTemplate
 from langchain.chains import RetrievalQA
 from langchain_groq import ChatGroq
-import tempfile
 import asyncio
 
-st.title("🤖💬 Chat with Data")
+st.title("🤖💬 Chat with Website Data")
 
 groq_api_key = st.secrets["GROQ_API_KEY"]
 llm = ChatGroq(groq_api_key=groq_api_key, model_name="Llama3-8b-8192")
 
 @st.cache_resource
-def load_and_process_data(files):
-    all_splits = []
-    for file in files:
-        with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as temp_file:
-            temp_file.write(file.read())
-            file_path = temp_file.name
-        
-        loader = PyPDFLoader(file_path)
-        data = loader.load_and_split()
-        text_splitter = RecursiveCharacterTextSplitter(
-            chunk_size=2000,
-            chunk_overlap=100
-        )
-        splits = text_splitter.split_documents(data)
-        all_splits.extend(splits)
+def load_and_process_data(url):
+    loader = WebBaseLoader(url)
+    data = loader.load()
+    text_splitter = RecursiveCharacterTextSplitter(
+        chunk_size=2000,
+        chunk_overlap=100
+    )
+    splits = text_splitter.split_documents(data)
     
     embedding = SentenceTransformerEmbeddings(model_name="all-MiniLM-L6-v2")
-    vectordb = FAISS.from_documents(all_splits, embedding)
+    vectordb = FAISS.from_documents(splits, embedding)
     return vectordb
 
 async def response_generator(vectordb, query):
@@ -49,24 +36,24 @@ async def response_generator(vectordb, query):
     result = await asyncio.to_thread(qa_chain, {"query": query})
     return result["result"]
 
-files = st.file_uploader("Upload PDF File(s)", type=["pdf"], accept_multiple_files=True)
-submit_pdf = st.checkbox('Submit and chat (PDF)')
+url = st.text_input("Enter your URL: ")
 
 st.subheader("", divider='rainbow')
 st.markdown(" ")
 
-if files and submit_pdf:
-    vectordb = load_and_process_data(files)
+if url:
+    vectordb = load_and_process_data(url)
     
-    if "messages" not in st.session_state:
-        st.session_state.messages = []
+    # Use a unique key for this page's chat history
+    if "web_chat_messages" not in st.session_state:
+        st.session_state.web_chat_messages = []
     
-    for message in st.session_state.messages:
+    for message in st.session_state.web_chat_messages:
         with st.chat_message(message["role"]):
             st.markdown(message["content"])
     
-    if query := st.chat_input("What is up?"):
-        st.session_state.messages.append({"role": "user", "content": query})
+    if query := st.chat_input("What would you like to know about this website?"):
+        st.session_state.web_chat_messages.append({"role": "user", "content": query})
         with st.chat_message("user"):
             st.markdown(query)
         
@@ -75,4 +62,6 @@ if files and submit_pdf:
         
         with st.chat_message("assistant"):
             st.markdown(response)
-        st.session_state.messages.append({"role": "assistant", "content": response})
+        st.session_state.web_chat_messages.append({"role": "assistant", "content": response})
+else:
+    st.write("Please enter a URL to start chatting about its content.")
