@@ -37,11 +37,11 @@ async def response_generator(vectordb, query):
     return result["result"]
 
 url = st.text_input("Enter your URL: ")
-
+submit_url = st.checkbox('Submit and chat (URL)')
 st.subheader("", divider='rainbow')
 st.markdown(" ")
 
-if url:
+if url and submit_url:
     vectordb = load_and_process_data(url)
     
     # Use a unique key for this page's chat history
@@ -63,5 +63,3 @@ if url:
         with st.chat_message("assistant"):
             st.markdown(response)
         st.session_state.web_chat_messages.append({"role": "assistant", "content": response})
-else:
-    st.write("Please enter a URL to start chatting about its content.")
