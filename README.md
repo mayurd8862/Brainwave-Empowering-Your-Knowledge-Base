@@ -13,21 +13,22 @@ Welcome to **🧠 BrainWave: 🤖 Empowering Your Knowledge Base** – your ulti
 To get started with BrainWave, follow these steps:
 
 1. **Clone the Repository**
+   
     ```bash
     git clone https://github.com/mayurd8862/Brainwave-Empowering-Your-Knowledge-Base.git
     ```
 
-2. **Install Dependencies**
+3. **Install Dependencies**
     ```bash
     pip install -r requirements.txt
     ```
 
-3. **Run the Application**
+4. **Run the Application**
     ```bash
     streamlit run 🏠_Home.py
     ```
     
-4. **Access the Application in browser**
+5. **Access the Application in browser**
    ```bash
    http://localhost:<port_no>
    ```
